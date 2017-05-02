@@ -4,10 +4,13 @@ import Vue from 'vue'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 import VueRouter from 'vue-router'
+import 'font-awesome/css/font-awesome.css';
+
 
 import App from './App'
 import Home from './components/Home'
 import User from './components/User'
+import UserCity from './components/UserCity'
 
 Vue.config.productionTip = false
 
@@ -16,8 +19,9 @@ Vue.use(VueRouter)
 
 var router = new VueRouter({
   routes: [
-    { path: '/users', component: User },
-    { path: '/home', component: Home }
+    { path: '/home', component: Home },
+    { path: '/user', component: User },
+    { path: '/usercity', component: UserCity }
   ]
 })
 
