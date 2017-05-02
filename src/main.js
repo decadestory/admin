@@ -3,18 +3,31 @@
 import Vue from 'vue'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
-import Router from 'vue-router'
+import VueRouter from 'vue-router'
 
 import App from './App'
+import Home from './components/Home'
+import User from './components/User'
 
 Vue.config.productionTip = false
 
 Vue.use(ElementUI)
-Vue.use(Router)
+Vue.use(VueRouter)
 
-/* eslint-disable no-new */
+var router = new VueRouter({
+  routes: [
+    { path: '/users', component: User },
+    { path: '/home', component: Home }
+  ]
+})
+
 new Vue({
   el: '#app',
   template: '<App/>',
+  router:router,
   components: { App }
-})
+}).$mount('#app')
+
+
+
+

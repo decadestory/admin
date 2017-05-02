@@ -5,27 +5,27 @@
         <template slot="title"><i class="el-icon-setting"></i>Jerry </template>
         <el-menu-item index="2-1"><i class="el-icon-setting"></i>退出登录</el-menu-item>
       </el-submenu>
-      <div logo><img src="./assets/logo.png" height="30"> EAdmin</div>
+      <div logo ><img src="./assets/logo.png" height="30">EAdmin</div>
     </el-menu>
     <div main>
       <div main-menu>
-        <el-menu default-active="2" vmenu>
+        <el-menu default-active="1" vmenu router="true">
           <el-submenu index="1">
             <template slot="title"><i class="el-icon-message"></i>首页</template>
             <el-menu-item-group>
               <template slot="title">Dashbord</template>
-              <el-menu-item index="1-1">登录统计</el-menu-item>
+              <el-menu-item index="/home">登录统计 </el-menu-item>
               <el-menu-item index="1-2">业务统计</el-menu-item>
             </el-menu-item-group>
             <el-menu-item-group title="管理中心">
               <el-menu-item index="1-3">管理策略</el-menu-item>
-            </el-menu-item-group>
+            </el-menu-item-group> 
             <el-submenu index="1-4">
               <template slot="title">管理设置</template>
               <el-menu-item index="1-4-1">管理内容</el-menu-item>
             </el-submenu>
           </el-submenu>
-          <el-menu-item index="2"><i class="el-icon-menu"></i>用户管理</el-menu-item>
+          <el-menu-item index="/users"><i class="el-icon-menu"></i>用户管理</el-menu-item>
           <el-menu-item index="3"><i class="el-icon-setting"></i>角色管理</el-menu-item>
           <el-menu-item index="4"><i class="el-icon-setting"></i>权限管理</el-menu-item>
           <el-menu-item index="5"><i class="el-icon-setting"></i>城市区域管理</el-menu-item>
@@ -35,120 +35,18 @@
       </div>
       <div c-title>活动列表</div>
       <div main-container>
-
-        <el-form :inline="true" class="demo-form-inline">
-          <el-form-item label="审批人">
-            <el-input placeholder="审批人"></el-input>
-          </el-form-item>
-          <el-form-item label="审批人">
-            <el-input placeholder="审批人"></el-input>
-          </el-form-item>
-          <el-form-item label="审批人">
-            <el-input placeholder="审批人"></el-input>
-          </el-form-item>
-          <el-form-item label="审批人">
-            <el-input placeholder="审批人"></el-input>
-          </el-form-item>
-          <el-form-item label="审批人">
-            <el-input placeholder="审批人"></el-input>
-          </el-form-item>
-          <el-form-item label="审批人">
-            <el-input placeholder="审批人"></el-input>
-          </el-form-item>
-          <el-form-item label="活动区域">
-            <el-select placeholder="活动区域">
-              <el-option label="区域一" value="shanghai"></el-option>
-              <el-option label="区域二" value="beijing"></el-option>
-            </el-select>
-          </el-form-item>
-          <el-form-item>
-            <el-button type="primary" icon="search">查询</el-button>
-          </el-form-item>
-        </el-form>
-
-        <el-button-group list-btn>
-          <el-button icon="edit"> 编辑</el-button>
-          <el-button icon="share"> 分享</el-button>
-          <el-button icon="delete"> 删除</el-button>
-        </el-button-group>
-
-        <template>
-          <el-table :data="tableData3" border style="width: 100%">
-            <el-table-column prop="date" label="日期" width="180">
-            </el-table-column>
-            <el-table-column prop="name" label="姓名" width="180">
-            </el-table-column>
-            <el-table-column prop="address" label="地址">
-            </el-table-column>
-            <el-table-column prop="sex" label="性别">
-            </el-table-column>
-            <el-table-column prop="age" label="年龄">
-            </el-table-column>
-          </el-table>
-        </template>
-
-        <el-pagination epager layout="prev, pager, next" :total="1000">
-        </el-pagination>
-
-
-
+        <router-view></router-view>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+
   export default {
     name: 'app',
-    data() {
-      return {
-        tableData3: [{
-          date: '2016-05-03',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄',
-          sex: '男',
-          age: 33
-        }, {
-          date: '2016-05-02',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄',
-          sex: '男',
-          age: 33
-        }, {
-          date: '2016-05-04',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄',
-          sex: '男',
-          age: 33
-        }, {
-          date: '2016-05-01',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄',
-          sex: '男',
-          age: 33
-        }, {
-          date: '2016-05-08',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄',
-          sex: '男',
-          age: 33
-        }, {
-          date: '2016-05-06',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄',
-          sex: '男',
-          age: 33
-        }, {
-          date: '2016-05-07',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄',
-          sex: '男',
-          age: 33
-        }]
-      }
-    }
+    components:{}
   }
-
 </script>
 
 <style>
