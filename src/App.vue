@@ -18,7 +18,7 @@
               <el-menu-item index="/usercity"><i class="fa fa-bar-chart"></i> 用户城市管理</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
-          <el-menu-item index="3"><i class="fa fa-address-card-o"></i> 角色管理</el-menu-item>
+          <el-menu-item index="/role"><i class="fa fa-address-card-o"></i> 角色管理</el-menu-item>
           <el-menu-item index="4"><i class="fa fa-street-view"></i> 权限管理</el-menu-item>
           <el-menu-item index="5"><i class="fa fa-map-o"></i> 城市区域管理</el-menu-item>
           <el-menu-item index="6"><i class="fa fa-cog"></i> 配置中心</el-menu-item>
