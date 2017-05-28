@@ -9,7 +9,7 @@
     </el-menu>
     <div main>
       <div main-menu>
-        <el-menu default-active="/home" vmenu router="true">
+        <el-menu :router="true" default-active="/home" vmenu>
           <el-menu-item index="/home"><i class="fa fa-heartbeat"></i> 首页</el-menu-item>
           <el-submenu index="/user">
             <template slot="title"><i class="fa fa-user-circle-o"></i> 用户管理</template>

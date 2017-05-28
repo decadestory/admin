@@ -14,7 +14,7 @@
     </el-form>
 
     <el-button-group list-btn>
-      <el-button icon="plus"> 添加用户</el-button>
+      <el-button icon="plus" @click="AddUser"> 添加用户</el-button>
       <el-button icon="delete"> 批量删除</el-button>
     </el-button-group>
 
@@ -39,9 +39,46 @@
 
     <el-pagination epager layout="prev, pager, next" :total="1000">
     </el-pagination>
+
+    <el-dialog  v-model="userDialog" :close-on-click-modal="false">
+			<el-form :model="userForm" label-width="80px" :rules="saveFormRules" ref="editForm">
+				<el-form-item label="账号" prop="Account">
+					<el-input v-model="userForm.Account" auto-complete="off"></el-input>
+				</el-form-item>
+				<el-form-item label="性别" prop="Gender">
+					<el-select v-model="userForm.Gender" placeholder="请选择性别">
+						<el-option label="男" :value="1"></el-option>
+						<el-option label="女" :value="0"></el-option>
+					</el-select>
+				</el-form-item>
+				<el-form-item label="是否启用" prop="Enable">
+					<el-radio-group v-model="userForm.Enable">
+						<el-radio class="radio" :label="1">启用</el-radio>
+						<el-radio class="radio" :label="0">禁用</el-radio>
+					</el-radio-group>
+				</el-form-item>
+				<el-form-item label="姓名" prop="Name">
+					<el-input v-model="userForm.Name" auto-complete="off"></el-input>
+				</el-form-item>
+				<el-form-item label="密码" prop="Password">
+					<el-input v-model="userForm.Password" type="Password" auto-complete="off"></el-input>
+				</el-form-item>
+				<el-form-item label="手机号" prop="Phone">
+					<el-input v-model="userForm.Phone"></el-input>
+				</el-form-item>
+				<el-form-item label="邮箱地址" prop="EMail">
+					<el-input v-model="userForm.EMail"></el-input>
+				</el-form-item>
+
+			</el-form>
+			<div slot="footer" class="dialog-footer">
+				<el-button @click.native="userDialog = false">取 消</el-button>
+				<el-button type="primary" @click.native="Submit" :loading="saveLoading">保存</el-button>
+			</div>
+		</el-dialog>
+
   </div>
 </template>
-
 <script>
   import NProgress from 'nprogress'
 
@@ -50,8 +87,23 @@
     data() {
       return {
         ListData: [],
-        multipleSelection: []
-      }    
+        multipleSelection: [],
+        userDialog:false,
+        saveLoading:false,
+        saveFormRules: {
+					name: [
+						{ required: true, message: '请输入姓名', trigger: 'blur' }
+					]
+				},
+        userForm:{
+					id: 0,
+					name: '',
+					sex: -1,
+					age: 0,
+					birth: '',
+					addr: ''
+          },
+      }
     },
 		mounted() {
       NProgress.start();
@@ -83,6 +135,9 @@
 			formatEnable: function (row, column) {
 				return row.Enable == true ? '启用' : row.Enable == false ? '禁用' : '未知';
 			},
+      AddUser:function(){
+        this.userDialog =true;
+      }
      }
   }
 
